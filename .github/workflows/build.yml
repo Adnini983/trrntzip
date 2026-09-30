@@ -37,3 +37,8 @@ jobs:
         working-directory: ${{runner.workspace}}/build
         run: |
           ctest -C Release --output-on-failure --timeout 99
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}-build
+          path: ${{runner.workspace}}/build
